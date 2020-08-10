@@ -1,0 +1,14 @@
+
+--1. 2014년 1월 2일 내원환자 전체 정보조회
+--   환자번호, 환자이름, 생년월일, 성별, 진료의사명, 진료과명
+-- 스칼라 서브쿼리로 표현
+SELECT (SELECT)as pnum , P.PAT_NAME ,P.PAT_BIRTH , P.PAT_GENDER , D.DOC_NAME, DE.DEP_NAME
+FROM patient P,(
+        SELECT DE.DEP_NAME  FROM department DE,(
+        SELECT D.DOC_NAME  FROM doctor D,(
+         (SELECT * FROM treat 
+         WHERE trt_year = 2014 AND trt_date =0101)T )
+         )
+         );
+    
+    
